@@ -1,0 +1,11 @@
+{
+  "appId": "com.kind.moviewatchlist",
+  "appName": "Watchlist",
+  "webDir": "web/web",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

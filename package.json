@@ -1,0 +1,90 @@
+{
+  "name": "movie-watchlist",
+  "productName": "Watchlist",
+  "version": "1.0.0",
+  "author": {
+    "name": "shibilrahman",
+    "email": "kelkacommunity@gmail.com",
+    "url": "https://github.com/shibil001"
+  },
+  "homepage": "https://github.com/shibil001",
+  "description": "A simple, premium movie watchlist ranked by how much you want to watch each title.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --mac --universal",
+    "build:mac": "electron-builder --mac --universal",
+    "build:win": "electron-builder --win --x64",
+    "build:web": "node scripts/build-web.js",
+    "deploy": "node scripts/build-web.js && npx --yes wrangler deploy",
+    "serve": "node scripts/build-web.js && npx --yes serve web -l 8080",
+    "android:sync": "node scripts/build-web.js && cap sync android",
+    "android:open": "cap open android",
+    "build:android": "bash scripts/build-android.sh",
+    "build:all": "npm run build:mac && npm run build:win && npm run build:android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.kind.moviewatchlist",
+    "productName": "Watchlist",
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "build/icon.png",
+      "category": "public.app-category.entertainment",
+      "target": "dmg",
+      "artifactName": "Watchlist-mac.${ext}"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "franchises.js",
+      "sync.js",
+      "styles.css",
+      "config.js",
+      "assets/**/*",
+      "fonts/**/*",
+      "pwa.js",
+      "manifest.webmanifest",
+      "icons/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "artifactName": "Watchlist-Setup.${ext}",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Watchlist",
+      "runAfterFinish": true
+    },
+    "portable": {
+      "artifactName": "Watchlist-Portable.${ext}"
+    }
+  }
+}
