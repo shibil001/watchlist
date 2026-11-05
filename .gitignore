@@ -1,6 +1,8 @@
-node_modules
-.env
-.env.*
-.DS_Store
-__MACOSX
-supabase/.temp
+*
+!.gitignore
+!README.md
+!.github/
+!.github/workflows/
+!.github/workflows/imdb-sync.yml
+!scripts/
+!scripts/imdb-sync.js
